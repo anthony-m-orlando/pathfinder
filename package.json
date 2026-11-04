@@ -1,0 +1,16 @@
+{
+  "name": "pathfinder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}

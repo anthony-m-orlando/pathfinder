@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <title>Pathfinder | Map</title>
+    <script type="module" src="scripts/app.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="brand" href="./">Pathfinder</a>
+        <a class="nav-link" href="./route.html">Route optimizer</a>
+      </nav>
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Map explorer</p>
+          <h1>New York</h1>
+          <p class="intro">A small example of Geoapify maps, places, geocoding, and routing.</p>
+        </div>
+      </header>
+
+      <section class="map-layout" aria-label="Map and example results">
+        <div class="map-frame">
+          <div id="map" role="application" aria-label="Interactive map showing example results"></div>
+        </div>
+        <aside class="results-panel" aria-live="polite">
+          <div class="panel-heading">
+            <h2>Example results</h2>
+            <p id="status">Loading map and Geoapify examples…</p>
+          </div>
+          <section class="result-card">
+            <span class="result-number">01</span>
+            <div>
+              <h3>Geocoded address</h3>
+              <p id="address-result">350 Fifth Ave, New York, NY</p>
+            </div>
+          </section>
+          <section class="result-card">
+            <span class="result-number">02</span>
+            <div>
+              <h3>Nearby restaurants</h3>
+              <p id="places-result">Searching nearby places…</p>
+            </div>
+          </section>
+          <section class="result-card">
+            <span class="result-number">03</span>
+            <div>
+              <h3>Driving route</h3>
+              <p id="route-result">Calculating route…</p>
+            </div>
+          </section>
+          <p class="map-credit">Map tiles © <a href="https://www.geoapify.com/" target="_blank" rel="noreferrer">Geoapify</a> · © OpenStreetMap contributors</p>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

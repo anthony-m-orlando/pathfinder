@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/expand-google-maps-link"
+  to = "/.netlify/functions/expand-google-maps-link"
+  status = 200

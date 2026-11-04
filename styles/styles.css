@@ -1,0 +1,276 @@
+:root {
+  color: #222;
+  background: #fff;
+  font-family: system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  width: min(100% - 32px, 1120px);
+  margin: 0 auto;
+  padding: 18px 0 32px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  margin-bottom: 36px;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-link {
+  padding: 8px 0 8px 12px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(1.8rem, 8vw, 2.5rem);
+  line-height: 1.15;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+h3 {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.intro {
+  max-width: 640px;
+  margin-bottom: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.map-layout,
+.route-results {
+  display: grid;
+  gap: 20px;
+}
+
+.map-frame {
+  min-height: 360px;
+  background: #f1f1f1;
+}
+
+#map,
+#route-map {
+  width: 100%;
+  height: 55svh;
+  min-height: 360px;
+}
+
+.results-panel,
+.route-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-heading p,
+.result-card p,
+.route-summary > p,
+.field-help {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.result-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.result-number {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.result-card p {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+}
+
+.map-credit {
+  margin: auto 0 0;
+  color: #777;
+  font-size: 0.75rem;
+}
+
+.route-form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.route-form label {
+  font-weight: 600;
+}
+
+.route-form textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.route-form textarea:focus-visible,
+.button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 3px;
+}
+
+.field-help {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #222;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.status {
+  min-height: 1.5em;
+  margin-bottom: 14px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.route-results {
+  border-top: 1px solid #e8e8e8;
+  padding-top: 16px;
+}
+
+.route-summary {
+  min-width: 0;
+}
+
+.route-summary > p {
+  margin-bottom: 0;
+}
+
+.route-summary ol {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.route-summary li {
+  padding-left: 4px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.leaflet-container {
+  font-family: system-ui, sans-serif;
+}
+
+@media (min-width: 760px) {
+  .page {
+    padding-top: 28px;
+  }
+
+  .site-nav {
+    margin-bottom: 48px;
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+  }
+
+  .map-layout,
+  .route-results {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: stretch;
+  }
+
+  .map-frame {
+    min-height: 540px;
+  }
+
+  #map,
+  #route-map {
+    height: 68vh;
+    min-height: 540px;
+  }
+
+  .results-panel,
+  .route-summary {
+    padding: 4px 0;
+  }
+
+  .route-form {
+    max-width: 720px;
+  }
+
+  .button {
+    width: fit-content;
+    min-width: 150px;
+  }
+}
