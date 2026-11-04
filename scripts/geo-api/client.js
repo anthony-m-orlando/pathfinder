@@ -3,14 +3,11 @@
  */
 export class GeoapifyClient {
   /**
-   * @param {string} apiKey - Your Geoapify API key.
-   * @param {string} [baseUrl='https://api.geoapify.com'] - Geoapify API base endpoint.
+   * Requests go through the site's /api/geoapify proxy function, which attaches
+   * the GEOAPIFY_API_KEY server-side so the key is never shipped to the browser.
+   * @param {string} [baseUrl='/api/geoapify'] - Proxy base path (or absolute URL).
    */
-  constructor(apiKey, baseUrl = 'https://api.geoapify.com') {
-    if (!apiKey) {
-      throw new Error('Geoapify API key is required.');
-    }
-    this.apiKey = apiKey;
+  constructor(baseUrl = '/api/geoapify') {
     this.baseUrl = baseUrl.replace(/\/$/, '');
   }
 
@@ -22,10 +19,7 @@ export class GeoapifyClient {
    * @returns {Promise<any>} Response payload parsed as JSON or Blob
    */
   async request(endpoint, params = {}, options = {}) {
-    const url = new URL(`${this.baseUrl}${endpoint}`);
-    
-    // Externalized API key attached to every request
-    url.searchParams.append('apiKey', this.apiKey);
+    const url = new URL(`${this.baseUrl}${endpoint}`, window.location.origin);
 
     // Append custom query parameters
     Object.entries(params).forEach(([key, value]) => {

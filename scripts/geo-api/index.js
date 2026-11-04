@@ -6,12 +6,12 @@ import { MapsApi } from './maps.js';
 
 export class GeoapifySDK {
   /**
-   * Initializes the Geoapify SDK with an externalized API key.
-   * @param {string} apiKey 
+   * Initializes the Geoapify SDK. The API key is held server-side by the proxy function.
    * @param {Object} [config={}]
+   * @param {string} [config.baseUrl] - Override the proxy base path.
    */
-  constructor(apiKey, config = {}) {
-    this.client = new GeoapifyClient(apiKey, config.baseUrl);
+  constructor(config = {}) {
+    this.client = new GeoapifyClient(config.baseUrl);
     
     this.geocoding = new GeocodingApi(this.client);
     this.routing = new RoutingApi(this.client);

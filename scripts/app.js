@@ -3,7 +3,6 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/styles.css';
 
-const apiKey = import.meta.env.GEOAPIFY_API_KEY;
 const map = L.map('map').setView([40.7484, -73.9857], 14);
 const status = document.querySelector('#status');
 const addressResult = document.querySelector('#address-result');
@@ -11,7 +10,7 @@ const placesResult = document.querySelector('#places-result');
 const routeResult = document.querySelector('#route-result');
 
 L.tileLayer(
-  `https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=${encodeURIComponent(apiKey ?? '')}`,
+  '/api/geoapify/tiles/{z}/{x}/{y}.png',
   {
     attribution: '&copy; <a href="https://www.geoapify.com/">Geoapify</a> &copy; OpenStreetMap contributors',
     maxZoom: 20,
@@ -22,14 +21,7 @@ const addressMarker = L.marker([40.7484, -73.9857]).addTo(map);
 addressMarker.bindPopup('350 Fifth Ave, New York, NY');
 
 async function runExample() {
-  if (!apiKey) {
-    status.textContent = 'Geoapify API key is missing. Check GEOAPIFY_API_KEY in .env and restart Vite.';
-    placesResult.textContent = 'Not available without an API key.';
-    routeResult.textContent = 'Not available without an API key.';
-    return;
-  }
-
-  const geoapify = new GeoapifySDK(apiKey);
+  const geoapify = new GeoapifySDK();
   status.textContent = 'Loading Geoapify results…';
 
   try {

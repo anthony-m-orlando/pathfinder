@@ -41,7 +41,6 @@ function googleMapsLinkExpansionPlugin() {
 
 export default defineConfig({
   plugins: [googleMapsLinkExpansionPlugin()],
-  envPrefix: ['GEOAPIFY_'],
   build: {
     rollupOptions: {
       input: {
