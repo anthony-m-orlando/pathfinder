@@ -5,7 +5,6 @@ import '../styles/styles.css';
 import { isShortGoogleMapsLink, parseRouteInput } from './route-input.js';
 import { getRouteCoordinateLines } from './route-geometry.js';
 
-const apiKey = import.meta.env.GEOAPIFY_API_KEY;
 const form = document.querySelector('#route-form');
 const input = document.querySelector('#route-input');
 const button = form.querySelector('button');
@@ -17,7 +16,7 @@ const map = L.map('route-map').setView([40.7484, -73.9857], 12);
 const routeLayers = L.featureGroup().addTo(map);
 
 L.tileLayer(
-  `https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=${encodeURIComponent(apiKey ?? '')}`,
+  '/api/geoapify/tiles/{z}/{x}/{y}.png',
   {
     attribution: '&copy; <a href="https://www.geoapify.com/">Geoapify</a> &copy; OpenStreetMap contributors',
     maxZoom: 20,
@@ -93,11 +92,6 @@ form.addEventListener('submit', async (event) => {
   stopList.replaceChildren();
   stopHeading.textContent = 'Locations provided';
 
-  if (!apiKey) {
-    status.textContent = 'Geoapify API key is missing. Check GEOAPIFY_API_KEY in .env and restart Vite.';
-    return;
-  }
-
   button.disabled = true;
   status.textContent = 'Reading route…';
   summary.textContent = 'Resolving locations and optimizing the route.';
@@ -119,7 +113,7 @@ form.addEventListener('submit', async (event) => {
       throw new Error('For this demo, a route can include up to 12 locations.');
     }
 
-    const geoapify = new GeoapifySDK(apiKey);
+    const geoapify = new GeoapifySDK();
     status.textContent = `Finding ${stopNames.length} locations…`;
     const stops = await Promise.all(stopNames.map((stop) => resolveStop(geoapify, stop)));
 
